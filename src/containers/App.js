@@ -15,11 +15,6 @@ class App extends Component {
     }
   }
 
-  clickClack = message => {
-   this.props.setSearchField(message);
-  }
-
-
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response=> response.json())
@@ -39,7 +34,7 @@ class App extends Component {
       <h1>Loading</h1> :
       (
         <div className='tc'>
-          <button onClick={this.clickClack}>SomeButton + {this.props.val}</button>
+          <button onClick={this.props.clickClack}>SomeButton + {this.props.val}</button>
           <h1 className='f1'>RoboFriends</h1>
           <SearchBox searchChange={this.onSearchChange}/>
           <Scroll>
@@ -52,9 +47,8 @@ class App extends Component {
 
 
 const mapDispatchToProps =  {
-    setSearchField,
-
-}
+    clickClack: setSearchField,
+};
 
 const mapStateToProps = state => {
   return { val: state.reducuerField };
