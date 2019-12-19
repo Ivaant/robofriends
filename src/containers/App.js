@@ -3,18 +3,24 @@ import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import './App.css';
+import { connect } from 'react-redux'
+import {setSearchField} from "../actions";
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       robots: [],
-      searchfield: ''
+      searchfield: '',
     }
   }
 
+  clickClack = message => {
+   this.props.setSearchField(message);
+  }
+
+
   componentDidMount() {
-    console.log(this.props.store);
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response=> response.json())
       .then(users => {this.setState({ robots: users})});
@@ -33,6 +39,7 @@ class App extends Component {
       <h1>Loading</h1> :
       (
         <div className='tc'>
+          <button onClick={this.clickClack}>SomeButton + {this.props.val}</button>
           <h1 className='f1'>RoboFriends</h1>
           <SearchBox searchChange={this.onSearchChange}/>
           <Scroll>
@@ -43,4 +50,13 @@ class App extends Component {
   }
 }
 
-export default App;
+
+const mapDispatchToProps =  {
+    setSearchField,
+
+}
+
+const mapStateToProps = state => {
+  return { val: state.reducuerField };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
