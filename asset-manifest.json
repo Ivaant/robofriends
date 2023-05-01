@@ -2,6 +2,7 @@
   "files": {
     "main.css": "/robofriends/static/css/main.bf671afd.css",
     "main.js": "/robofriends/static/js/main.db27c301.js",
+    "service-worker.js": "/robofriends/service-worker.js",
     "static/media/SEGA.woff": "/robofriends/static/media/SEGA.47b4bfa94ef243af4a5b.woff",
     "index.html": "/robofriends/index.html",
     "main.bf671afd.css.map": "/robofriends/static/css/main.bf671afd.css.map",
